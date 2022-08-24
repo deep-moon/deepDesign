@@ -6,29 +6,35 @@
  * @Description:
  * @FilePath: /deepDesign/src/App.tsx
  */
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Button, { ButtonType, ButtonSize } from "./components/Button/button";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Hello world</h1>
-        <h2>Hello world</h2>
-        <h3>Hello world</h3>
-        <hr />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button autoFocus>123</Button>
+      <Button disabled>123</Button>
+      <Button
+        btnType={ButtonType.Primary}
+        size={ButtonSize.Large}
+        onClick={() => alert("111")}
+      >
+        111
+      </Button>
+      <Button btnType={ButtonType.Danger} size={ButtonSize.Large}>
+        111
+      </Button>
+      <Button size={ButtonSize.Large} disabled>
+        large disable
+      </Button>
+      <Button size={ButtonSize.Small}>small</Button>
+      <Button btnType={ButtonType.Link} href={"#"}>
+        link
+      </Button>
+      <Button btnType={ButtonType.Link} href={"#"} disabled>
+        link
+      </Button>
     </div>
   );
 }
