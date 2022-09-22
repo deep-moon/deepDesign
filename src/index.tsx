@@ -1,6 +1,14 @@
+/*
+ * @Author: deep moon
+ * @Date: 2022-08-23 17:21:01
+ * @LastEditTime: 2022-08-23 18:16:31
+ * @LastEditors: deep moon
+ * @Description:
+ * @FilePath: /deepDesign/src/index.tsx
+ */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './styles/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
