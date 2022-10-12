@@ -1,19 +1,11 @@
-/*
- * @Author: deep moon
- * @Date: 2022-09-22 16:00:55
- * @LastEditTime: 2022-09-22 16:35:07
- * @LastEditors: deep moon
- * @Description:
- * @FilePath: \deepDesign\src\components\Button\button.test.tsx
- */
 import { render, screen, fireEvent } from "@testing-library/react";
-import Button, { ButtonProps, ButtonSize, ButtonType } from "./button";
+import Button, { ButtonProps } from "./button";
 const defaultProps = {
   onClick: jest.fn(),
 };
 const testProps: ButtonProps = {
-  btnType: ButtonType.Primary,
-  size: ButtonSize.Small,
+  btnType: "primary",
+  size: "sm",
   className: "test",
 };
 
@@ -50,7 +42,7 @@ describe("test Button component", () => {
 
   it("should render a link when btnType equals link and href is provided", () => {
     render(
-      <Button btnType={ButtonType.Link} href={"www.baidu.com"}>
+      <Button btnType={"link"} href={"www.baidu.com"}>
         Link
       </Button>
     );

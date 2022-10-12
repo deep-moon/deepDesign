@@ -1,25 +1,9 @@
-/*
- * @Author: deep moon
- * @Date: 2022-09-22 16:00:55
- * @LastEditTime: 2022-09-22 16:10:57
- * @LastEditors: deep moon
- * @Description:
- * @FilePath: \deepDesign\src\components\Button\button.tsx
- */
 import React from "react";
 import classNames from "classnames";
 
-export enum ButtonSize {
-  Large = "lg",
-  Small = "sm",
-}
+type ButtonSize = "lg" | "sm";
 
-export enum ButtonType {
-  Primary = "primary",
-  Default = "default",
-  Danger = "danger",
-  Link = "link",
-}
+type ButtonType = "primary" | "default" | "danger" | "link";
 
 interface BaseButtonProps {
   className?: string;
@@ -27,7 +11,7 @@ interface BaseButtonProps {
   btnType?: ButtonType;
   size?: ButtonSize;
   href?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 type NativeButtonProps = BaseButtonProps &
@@ -43,9 +27,9 @@ const Button: React.FC<ButtonProps> = (props) => {
   const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    disabled: btnType === ButtonType.Link && disabled,
+    disabled: btnType === "link" && disabled,
   });
-  if (btnType === ButtonType.Link && href) {
+  if (btnType === "link" && href) {
     return (
       <a href={href} className={classes} {...restProps}>
         {children}
@@ -61,7 +45,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
 Button.defaultProps = {
   disabled: false,
-  btnType: ButtonType.Default,
+  btnType: "default",
 };
 
 export default Button;

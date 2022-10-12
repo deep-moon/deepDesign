@@ -1,38 +1,48 @@
 /*
  * @Author: deep moon
  * @Date: 2022-08-23 17:21:01
- * @LastEditTime: 2022-08-23 18:25:01
+ * @LastEditTime: 2022-09-22 17:34:54
  * @LastEditors: deep moon
  * @Description:
- * @FilePath: /deepDesign/src/App.tsx
+ * @FilePath: \deepDesign\src\App.tsx
  */
-import React from "react";
 import "./App.css";
-import Button, { ButtonType, ButtonSize } from "./components/Button/button";
+import Button from "./components/Button/button";
+import Menu from "./components/Menu/menu";
+import MenuItem from "./components/Menu/menuItem";
+import SubMenu from "./components/Menu/subMenu";
 
 function App() {
   return (
     <div className="App">
+      <Menu
+        // mode={"horizontal"}
+        onSelect={(index) => console.log(index)}
+        // defaultOpenSubMenus={["3"]}
+      >
+        <MenuItem>0</MenuItem>
+        <MenuItem>1</MenuItem>
+        <MenuItem disabled>2</MenuItem>
+        <SubMenu title="submenu">
+          <MenuItem>submenu</MenuItem>
+        </SubMenu>
+      </Menu>
       <Button autoFocus>123</Button>
       <Button disabled>123</Button>
-      <Button
-        btnType={ButtonType.Primary}
-        size={ButtonSize.Large}
-        onClick={() => alert("111")}
-      >
+      <Button btnType={"primary"} size={"lg"} onClick={() => alert("111")}>
         111
       </Button>
-      <Button btnType={ButtonType.Danger} size={ButtonSize.Large}>
+      <Button btnType={"danger"} size={"lg"}>
         111
       </Button>
-      <Button size={ButtonSize.Large} disabled>
+      <Button size={"lg"} disabled>
         large disable
       </Button>
-      <Button size={ButtonSize.Small}>small</Button>
-      <Button btnType={ButtonType.Link} href={"#"}>
+      <Button size={"sm"}>small</Button>
+      <Button btnType={"link"} href={"#"}>
         link
       </Button>
-      <Button btnType={ButtonType.Link} href={"#"} disabled>
+      <Button btnType={"link"} href={"#"} disabled>
         link
       </Button>
     </div>
