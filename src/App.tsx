@@ -11,12 +11,21 @@ import Button from "./components/Button/button";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
+import Icon from "./components/Icon/icon";
+import Transition from "./components/Transition/transition";
+import { library, Library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+library.add(fas);
 
 function App() {
+  const [show, setShow] = useState<boolean>(false);
   return (
     <div className="App">
+      <Icon icon={"angle-down"} theme={"danger"} size={"10x"} />
       <Menu
-        // mode={"horizontal"}
+        // mode={"vertical"}
         onSelect={(index) => console.log(index)}
         // defaultOpenSubMenus={["3"]}
       >
@@ -45,6 +54,22 @@ function App() {
       <Button btnType={"link"} href={"#"} disabled>
         link
       </Button>
+      <Button size="lg" onClick={() => setShow(!show)}>
+        Toggle
+      </Button>
+      <Transition in={show} timeout={300} animation={"zoom-in-top"}>
+        <p>
+          <p>123123asdhgdhsa</p>
+          <p>123123asdhgdhsa</p>
+          <p>123123asdhgdhsa</p>
+          <p>123123asdhgdhsa</p>
+        </p>
+      </Transition>
+      <Transition in={show} timeout={300} animation={"zoom-in-top"} wrapper>
+        <Button size="lg" btnType="primary">
+          a large button
+        </Button>
+      </Transition>
     </div>
   );
 }
