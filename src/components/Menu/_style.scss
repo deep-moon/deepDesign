@@ -37,6 +37,7 @@
       transition: transform 0.25s ease-in-out;
     }
     &:hover {
+      color: $body-color;
       .arrow-icon {
         transform: rotate(180deg);
       }
