@@ -1,5 +1,4 @@
 import {
-  cleanup,
   fireEvent,
   render,
   screen,
@@ -11,6 +10,11 @@ import Menu, { MenuProps } from "./menu";
 import MenuItem from "./menuItem";
 import SubMenu from "./subMenu";
 
+jest.mock("../Icon/icon", () => {
+  return () => {
+    return <i className="fa" />;
+  };
+});
 const testProps: MenuProps = {
   defaultIndex: "0",
   // className: "test",
@@ -27,7 +31,7 @@ const generateMenu = (props: MenuProps) => {
       <MenuItem disabled={true}>disabled</MenuItem>
       <MenuItem>test</MenuItem>
       <SubMenu title="submenu">
-        <MenuItem>submenu1</MenuItem>
+        <MenuItem>testSubmenu</MenuItem>
       </SubMenu>
     </Menu>
   );
@@ -64,7 +68,7 @@ describe("test Menu and MenuItem component in default mode", () => {
     expect(menuElement).toHaveClass("deep-menu");
     expect(
       within(menuElement).queryAllByTestId("test-menu-item").length
-    ).toEqual(4);
+    ).toEqual(3);
     expect(activeElement).toHaveClass("menu-item is-active");
     expect(disabledElement).toHaveClass("menu-item is-disabled");
   });
@@ -80,17 +84,17 @@ describe("test Menu and MenuItem component in default mode", () => {
   });
 
   it("should show dropdown items when hover on subMenu", async () => {
-    expect(screen.queryByText("submenu1")).not.toBeVisible();
+    expect(screen.queryByText("testSubmenu")).not.toBeInTheDocument();
     const submenuElement = screen.getByText("submenu");
     fireEvent.mouseEnter(submenuElement);
     await waitFor(() => {
-      expect(screen.queryByText("submenu1")).toBeVisible();
+      expect(screen.queryByText("testSubmenu")).toBeVisible();
     });
-    fireEvent.click(screen.getByText("submenu1"));
+    fireEvent.click(screen.getByText("testSubmenu"));
     expect(testProps.onSelect).toBeCalledWith("3-0");
     fireEvent.mouseLeave(submenuElement);
     await waitFor(() => {
-      expect(screen.queryByText("submenu1")).not.toBeVisible();
+      expect(screen.queryByText("testSubmenu")).not.toBeVisible();
     });
   });
 });
@@ -105,9 +109,9 @@ describe("test Menu and MenuItem component in vertical mode", () => {
     expect(menuElement).toHaveClass("menu-vertical");
   });
   it("should show dropdown items when click on subMenu for vertical mode", () => {
-    expect(screen.queryByText("submenu1")).not.toBeVisible();
+    expect(screen.queryByText("testSubmenu")).not.toBeInTheDocument();
     const submenuElement = screen.getByText("submenu");
     fireEvent.click(submenuElement);
-    expect(screen.queryByText("submenu1")).toBeVisible();
+    expect(screen.queryByText("testSubmenu")).toBeVisible();
   });
 });

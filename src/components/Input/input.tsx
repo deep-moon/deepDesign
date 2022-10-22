@@ -1,9 +1,10 @@
-import React, { ReactElement, InputHTMLAttributes } from "react";
+import React, { ReactElement, InputHTMLAttributes, ChangeEvent } from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import classNames from "classnames";
 import Icon from "../Icon/icon";
 type InputSize = "lg" | "sm";
-interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, "size"> {
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLElement>, "size"> {
   /**是否禁用 Input */
   disabled?: boolean;
   /**设置 input 大小，支持 lg 或者是 sm */
@@ -14,6 +15,7 @@ interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, "size"> {
   addonBefore?: string | ReactElement;
   /**添加后缀 用于配置一些固定组合 */
   addonAfter?: string | ReactElement;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => {};
 }
 
 /**
@@ -31,8 +33,14 @@ export const Input: React.FC<InputProps> = (props) => {
     "input-group-addonAfter": addonAfter,
     disabled: disabled,
   });
+  if ("value" in restProps) {
+    delete restProps.defaultValue;
+    if (typeof restProps.value === "undefined" || restProps.value === null) {
+      restProps.value = "";
+    }
+  }
   return (
-    <div className={classes} style={style}>
+    <div className={classes} style={style} data-testid={"test-input"}>
       {addonBefore && (
         <div className="deep-input-group-addonBefore">{addonBefore}</div>
       )}
