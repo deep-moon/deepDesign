@@ -2,7 +2,6 @@ import React from "react";
 import Input from "./input";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 // import mdx from "./button.mdx";
-import Button from "../Button/button";
 
 const InputMeta: ComponentMeta<typeof Input> = {
   title: "Input",

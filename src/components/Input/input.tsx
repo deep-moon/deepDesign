@@ -15,7 +15,7 @@ export interface InputProps
   addonBefore?: string | ReactElement;
   /**添加后缀 用于配置一些固定组合 */
   addonAfter?: string | ReactElement;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => {};
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 /**
