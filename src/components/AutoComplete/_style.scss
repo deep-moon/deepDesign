@@ -1,0 +1,33 @@
+.deep-auto-complete {
+  position: relative;
+  .deep-suggestion-list {
+    list-style: none;
+    padding-left: 0;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    left: 0;
+    top: calc(100% + 8px);
+    border-bottom: $menu-border-width solid $menu-border-color;
+    box-shadow: $submenu-box-shadow;
+    .suggestion-loading-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+    }
+    .suggestion-item {
+      cursor: pointer;
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      color: $body-color;
+      transition: $menu-transition;
+      &.is-active {
+        color: $white;
+        background-color: $menu-item-active-color;
+      }
+      &:hover {
+        color: $menu-item-active-color;
+      }
+    }
+  }
+}

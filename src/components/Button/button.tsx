@@ -1,33 +1,20 @@
-/*
- * @Author: deep moon
- * @Date: 2022-09-22 16:00:55
- * @LastEditTime: 2022-09-22 16:10:57
- * @LastEditors: deep moon
- * @Description:
- * @FilePath: \deepDesign\src\components\Button\button.tsx
- */
 import React from "react";
 import classNames from "classnames";
 
-export enum ButtonSize {
-  Large = "lg",
-  Small = "sm",
-}
+type ButtonSize = "lg" | "sm";
 
-export enum ButtonType {
-  Primary = "primary",
-  Default = "default",
-  Danger = "danger",
-  Link = "link",
-}
+type ButtonType = "primary" | "default" | "danger" | "link";
 
 interface BaseButtonProps {
   className?: string;
+  /**设置 Button 的禁用 */
   disabled?: boolean;
+  /**设置 Button 的类型 */
   btnType?: ButtonType;
+  /**设置 Button 的尺寸 */
   size?: ButtonSize;
   href?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 type NativeButtonProps = BaseButtonProps &
@@ -37,15 +24,24 @@ type NativeAnchorProps = BaseButtonProps &
 
 export type ButtonProps = Partial<NativeButtonProps & NativeAnchorProps>;
 
-const Button: React.FC<ButtonProps> = (props) => {
+/**
+ * 最常用的按钮元素，支持Html button 和 a 链接的所有属性
+ * ### 引用方法
+ * ```
+ * import Button from "deepDesign";
+ * ```
+ * @param {*} props
+ * @return {*}
+ */
+export const Button: React.FC<ButtonProps> = (props) => {
   const { className, disabled, btnType, size, href, children, ...restProps } =
     props;
   const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    disabled: btnType === ButtonType.Link && disabled,
+    disabled: btnType === "link" && disabled,
   });
-  if (btnType === ButtonType.Link && href) {
+  if (btnType === "link" && href) {
     return (
       <a href={href} className={classes} {...restProps}>
         {children}
@@ -61,7 +57,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
 Button.defaultProps = {
   disabled: false,
-  btnType: ButtonType.Default,
+  btnType: "default",
 };
 
 export default Button;

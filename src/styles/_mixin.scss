@@ -1,7 +1,7 @@
 @use 'sass:color';
 
-@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
-  padding: $padding-x $padding-y;
+@mixin mixin-size($padding-y, $padding-x, $font-size, $border-radius) {
+  padding: $padding-y $padding-x;
   font-size: $font-size;
   border-radius: $border-radius;
 }
@@ -34,4 +34,44 @@
     background: $background;
     border-color: $border;
   }
+}
+
+@mixin zoom-animation(
+  $direction: "top",
+  $scaleStart: scaleY(0),
+  $scaleEnd: scaleY(1),
+  $origin: center top
+) {
+  .zoom-in-#{$direction}-enter {
+    opacity: 0;
+    transform: $scaleStart;
+  }
+  .zoom-in-#{$direction}-enter-active {
+    opacity: 1;
+    transform: $scaleEnd;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transform-origin: $origin;
+  }
+  .zoom-in-#{$direction}-exit {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  .zoom-in-#{$direction}-exit-active {
+    opacity: 0;
+    transform: $scaleStart;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transform-origin: $origin;
+  }
+}
+
+@mixin border-left-radius($radius) {
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin border-right-radius($radius) {
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
 }
