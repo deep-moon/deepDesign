@@ -1,35 +1,51 @@
 {
-  "name": "my-app",
+  "name": "deep-design",
   "version": "0.1.0",
-  "private": true,
+  "author": "deep moon",
+  "private": false,
+  "description": "React components library",
+  "license": "MIT",
+  "keywords": [
+    "Component",
+    "React",
+    "UI"
+  ],
+  "homepage": "https://github.com/deep-moon/deepDesign",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deep-moon/deepDesign"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.54",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@types/react-transition-group": "^4.4.5",
     "classnames": "^2.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "react-transition-group": "^4.4.5",
-    "sass": "^1.54.5",
-    "typescript": "^4.7.4",
-    "web-vitals": "^2.1.4"
+    "react-transition-group": "^4.4.5"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "clean": "rimraf ./dist",
+    "lint": "eslint --ext js,ts,tsx src --max-warnings 5",
+    "build": "npm run clean && npm run build-ts && npm run build-css",
+    "build-ts": "tsc -p tsconfig.build.json",
+    "build-css": "sass  ./src/styles/index.scss ./dist/index.css",
     "test": "react-scripts test",
+    "test:nowatch": "cross-env CI=true react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepublish": "npm run test:nowatch && npm run lint && npm run build",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -70,9 +86,26 @@
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "^0.0.13",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
     "@types/mdx": "^2.0.2",
+    "@types/node": "^16.11.54",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-transition-group": "^4.4.5",
+    "@types/webpack": "^5.28.0",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "cross-env": "^7.0.3",
+    "husky": "^8.0.1",
     "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "sass": "^1.54.5",
+    "typescript": "^4.7.4",
+    "web-vitals": "^2.1.4",
     "webpack": "^5.74.0"
   }
 }

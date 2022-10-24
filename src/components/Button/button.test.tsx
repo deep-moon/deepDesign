@@ -28,9 +28,9 @@ describe("test Button component", () => {
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual("BUTTON");
     expect(element).toHaveClass("btn btn-default");
+    expect(element.disabled).toBeFalsy();
     fireEvent.click(element);
     expect(defaultProps.onClick).toHaveBeenCalled();
-    expect(element.disabled).toBeFalsy();
   });
 
   it("should render the correct component based on different props", () => {

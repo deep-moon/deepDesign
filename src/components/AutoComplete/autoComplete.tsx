@@ -62,7 +62,6 @@ export const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
       if (results instanceof Promise) {
         setLoading(true);
         results.then((data) => {
-          alert(data);
           setLoading(false);
           setSuggestions(data);
         });
