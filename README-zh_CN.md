@@ -1,34 +1,35 @@
-# A component library built with React+typescript
+# 使用 React+typescript 打造的组件库
 
-deep-design is a set of component libraries built using React Hooks and typescript, document address: https://deep-moon.github.io/deepDesign
+deep-design 是使用 React Hooks 和 typescript 打造的一套组件库，
+文档地址：https://deep-moon.github.io/deepDesign
 
-English | [简体中文](./README-zh_CN.md)
+[English](./README.md) | 简体中文
 
-## Install and try
+### 安装试试
 
 ```javascript
 npm install deep-design --save
 ```
 
-## Usage
+### 使用
 
 ```javascript
-// load style
+// 加载样式
 import "deep-design/dist/index.css";
-// import component
+// 引入组件
 import { Button } from "deep-design";
 ```
 
-## Highlights
+### 亮点
 
 - 🔥 typescript with React Hooks
-- ⛑️ Complete unit testing with react-testing-library
-- 📚 Use storybook to debug and generate documentation pages locally
-- 📦 Augment components with third-party libraries - (react-fontawesome, react-transition-group)
+- ⛑️ 使用 react-testing-library 完成单元测试
+- 📚 使用 storybook 本地调试和生成文档页面
+- 📦 使用第三方库扩充组件-(react-fontawesome, react-transition-group)
 
-## Browsers support
+## 支持环境
 
-Modern browsers.
+现代浏览器。
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
